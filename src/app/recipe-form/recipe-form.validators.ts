@@ -1,0 +1,16 @@
+/**
+ * Created by roije on 20/12/2016.
+ */
+import {FormControl} from '@angular/forms';
+
+export class RecipeFormValidators{
+
+  static getRecipeNameLengthValidator() {
+    return function nameValidator(control: FormControl): { [s: string]: boolean} {
+
+      if(control.value.length < 3 || control.value.length > 40){
+        return {invalidLenght: true}
+      }
+    }
+  }
+}
