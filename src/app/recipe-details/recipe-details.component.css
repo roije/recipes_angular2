@@ -1,0 +1,44 @@
+.container{
+  background-color: #f8f8f8;
+}
+
+#img-div{
+  text-align: center;
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+#img-div > img {
+  max-width: 100%;
+  height: auto;
+  max-height: 420px;
+}
+
+#tags{
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+#recipe-header{
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+#recipe-header > h2 {
+  border-top: 1px solid #e7e7e7;
+  padding-top: 20px;
+}
+
+#tags > p {
+  display: inline-block;
+}
+
+#tags > div  {
+  display: inline-block;
+  margin-right: 3px;
+}
+
+h4{
+  text-transform: uppercase;
+}
+

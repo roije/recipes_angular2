@@ -1,0 +1,43 @@
+<div class="body">
+  <div class="container">
+    <form class="col-md-6 col-md-offset-3" (keydown)="onChange()">
+      <div class="row">
+        <label for="title">Navn:</label>
+        <input type="text"
+               id="title"
+               placeholder="Navn på opskrift"
+               class="form-control"
+               [(ngModel)]="recipe.title"
+
+        >
+
+        <label for="procedure">Fremgangsmåde:</label>
+        <textarea rows="4" cols="50"
+               id="procedure"
+               class="form-control"
+        ></textarea>
+
+        <label for="category">Kategori:</label>
+        <select id="category" class="form-control">
+          <option>Italian</option>
+          <option>Mexican</option>
+          <option>Hey</option>
+        </select>
+
+        <fieldset>
+          <legend>Ingredienser</legend>
+          <div id="amount" class="col-md-6">
+            <label>Mængde</label>
+            <input type="text" placeholder="e.g. (100 gram, 2 dl, 1 l)" class="form-control">
+          </div>
+          <div id="ingredient" class="col-md-6">
+            <label>Ingredient</label>
+            <input type="text" placeholder="e.g. (Hakkekød, smør, æg)" class="form-control">
+          </div>
+        </fieldset>
+
+      </div>
+    </form>
+
+  </div>
+</div>

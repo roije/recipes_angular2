@@ -1,0 +1,23 @@
+.category-image{
+  width: 80px;
+  height: 80px;
+}
+
+.category-box{
+  padding: 5px;
+}
+
+.content-category-box{
+  text-align: center;
+  padding: 20px;
+  /*border: 2px solid #777;*/
+  margin-right: 5px;
+  color: #777;
+}
+
+.content-category-box:hover{
+  cursor: pointer;
+  /*background-color: #f8f8f8;*/
+  /*border-color: #00B16A;*/
+  color: #00B16A;
+}

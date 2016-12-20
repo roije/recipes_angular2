@@ -1,0 +1,35 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div id="img-div" class="col-xs-12">
+        <img src="{{selectedRecipe.picture}}" />
+      </div>
+    </div>
+    <div class="row">
+      <div id="recipe-header" class="col-md-10 col-md-offset-1">
+        <h2>{{selectedRecipe.title.toUpperCase()}}</h2>
+        <div id="tags">
+          <p>Tags:</p>
+          <div *ngFor="let tag of selectedRecipe.tags">
+            <p>{{tag}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="ingredients-div" class="col-md-4 col-md-offset-1">
+        <h4>Ingredientser</h4>
+        <div *ngFor="let ingredient of selectedRecipe.ingredients">
+          <p>{{ingredient.amount + " " + ingredient.name}}</p>
+        </div>
+      </div>
+      <div id="directions" class="col-md-4">
+        <h4>Fremgangsmåde</h4>
+        <p>{{selectedRecipe.procedure}}</p>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-star"></span> Tilføj til favoritter</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+.content-recipe-box{
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #777;
+  margin-right: 5px;
+  color: #777;
+}
+
+.content-recipe-box:hover{
+  cursor: pointer;
+  background-color: #f8f8f8;
+  border-color: #00B16A;
+  color: #333;
+}
+
+.recipe-image{
+  width: 200px;
+  height: 150px;
+}
+
+.category-box{
+  padding: 5px;
+}

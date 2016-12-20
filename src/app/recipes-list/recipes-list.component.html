@@ -1,0 +1,66 @@
+<div class="body">
+  <div class="container">
+
+    <!-- Search form -->
+
+
+    <!--
+    <div class="row" style="margin-bottom: 20px;">
+      <form [(ngModel)]="search">
+        <div class="form-group float-xs-right col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <input class="form-control" type="text" placeholder="Search" >
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1">
+              Søg efter navn
+            </label>
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+              Søg efter ingredienser
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+    -->
+
+    <div class="row" style="margin-bottom: 20px;">
+      <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+        <h4>Søg</h4>
+        <input class="form-control" type="text" placeholder="Navn eller ingredienser..."  [(ngModel)]="search">
+      </div>
+      <div class="pull-right col-xs-6 col-sm-5 col-md-2 col-lg-2 col-xl-2" style="padding-top: 39px;">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Filtrer
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+            <li><a>Navn</a></li>
+            <li><a>Rating</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- Loop through recipes array and create div for every object -->
+      <div *ngFor="let recipe of this.recipes | recipesFilter : search">
+        <div *ngIf="recipe === -1">
+          Ingen opskrifter blev fundet. Ved søg av ingredienser skriv et '#" og mellemrum mellem hver ingredient. (#kylling #karry)
+        </div>
+        <div *ngIf="recipe === -2">
+          Ingen opskrifter med givne ingredienser. Prøv og tilføj flere, eller fjern det sidste mellemrum
+        </div>
+        <div *ngIf="recipe !== -1 && recipe !== -2" (click)="goToRecipe(recipe)">
+          <div class="category-box col-md-3 col-sm-6 col-lg-3" >
+            <div class="content-recipe-box">
+              <img class="recipe-image" src="{{recipe.picture}}" />
+              <h4>{{recipe.title}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+

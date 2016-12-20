@@ -1,0 +1,24 @@
+<div class="body">
+  <div class="container">
+    {{message}}
+
+    <div class="row">
+      <a routerLink="/recipes">
+        <div class="category-box col-md-3 col-sm-6 col-lg-3">
+          <div class="content-category-box">
+            <img class="category-image" src="../../images/categories/alle.png" />
+            <h2>Alle opskrifter</h2>
+          </div>
+        </div>
+      </a>
+      <div *ngFor="let category of this.categories">
+          <div (click)=goToRecipeList(category._id) class="category-box col-md-3 col-sm-6 col-lg-3">
+            <div class="content-category-box">
+              <img class="category-image" src="{{category.image}}" />
+              <h2>{{category.title}}</h2>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
