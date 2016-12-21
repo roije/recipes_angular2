@@ -36,11 +36,47 @@ export class RecipeService{
     }
   }
 
+  public createRecipe(recipe): Observable<Recipe> {
+
+    let options = this.getOptionsObject();
+
+    console.log(recipe);
+    console.log("her 1");
+    this.url = "http://localhost:3000/api/recipes";
+    return this.http.post(this.url, recipe, options)
+      .map((res: Response) => {
+        console.log(res.json());
+        let createdRecipe = res.json();
+        if(!this.recipes)
+        {
+          console.log("her 2");
+          this.getRemoteRecipes(undefined).subscribe(
+            () => this.recipes.push(createdRecipe)
+          );
+
+        }
+        else {
+          console.log("her 3")
+          this.recipes.push(createdRecipe);
+        }
+
+      })
+      .catch(this.handleError);
+
+  }
+
+
+
   public getLocalRecipes() : Recipe[]{
     return this.recipes;
   }
 
   private handleError(error: Response | any) {
     return Observable.throw("some error message");
+  }
+
+  private getOptionsObject(): RequestOptions {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    return new RequestOptions({ headers: headers });
   }
 }

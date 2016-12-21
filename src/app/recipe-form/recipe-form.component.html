@@ -1,20 +1,21 @@
 <div class="body">
   <div class="container">
     <form class="col-md-6 col-md-offset-3" [formGroup]="recipeForm" (ngSubmit)="onSubmit(recipeForm)">
-      <div class="row">
+      <h3>Ny opskrift</h3>
         <label for="title">Navn:</label>
         <input type="text"
                id="title"
                placeholder="Navn på opskrift"
-               class="form-control"
+               class="form-control form-input"
                [formControl]="recipeForm.controls['recipeTitle']"
 
         >
 
         <label for="procedure">Fremgangsmåde:</label>
-        <textarea rows="4" cols="50"
+        <textarea rows="10" cols="50"
                id="procedure"
-               class="form-control"
+                  placeholder="Beskrivelse af hvordan opskriften skal laves..."
+               class="form-control form-input"
                   [formControl]="recipeForm.controls['recipeProcedure']"
         ></textarea>
 
@@ -22,32 +23,34 @@
           <div *ngFor="let ingredient of recipeForm.controls.ingredients.controls; let i=index" class="panel panel-default">
             <div class="panel-heading">
               <span>Ingredient {{i + 1}}</span>
-              <span class="glyphicon glyphicon-remove pull-right" *ngIf="recipeForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(i)"></span>
+              <span class="glyphicon glyphicon-remove pull-right" style="cursor: pointer" *ngIf="recipeForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(i)"></span>
             </div>
 
             <div class="panel-body" [formGroupName]="i">
               <!-- Amount-->
-              <div class="form-group col-xs-6">
+              <div class="form-group col-xs-5">
                 <label>mængde</label>
                 <input type="text" class="form-control" placeholder="f.eks. 100 gr, 1 l, 10 dl"  formControlName="amount">
               </div>
 
               <!-- Ingredient -->
-              <div class="form-group col-xs-6">
-                <label>Ingredient</label>
-                <input type="text" class="form-control" placeholder="f.eks. mel, hakkekød, smør" formControlName="ingredient">
+              <div class="form-group col-xs-5">
+                <label>ingredient</label>
+                <input type="text" class="form-control" placeholder="f.eks. mel, hakkekød, smør" formControlName="name">
               </div>
+
+              <div class="col-xs-2" style="margin-top: 23px">
+                <span (click)="addIngredient()" class="btn btn-primary">+</span>
+              </div>
+
             </div>
 
           </div>
 
-          <a (click)="addIngredient()" style="cursor: default">
-            Tilføj ingredient +
-          </a>
         </div>
 
         <label for="category">Kategori:</label>
-        <select id="category" class="form-control" [formControl]="recipeForm.controls['recipeCategory']">
+        <select id="category" class="form-control form-input" [formControl]="recipeForm.controls['recipeCategory']">
           <option *ngFor="let category of categories" [value]="category._id">{{category.title}}</option>
         </select>
 
@@ -55,7 +58,7 @@
         <input type="text"
                id="tags"
                placeholder="f.eks. hakkekød, mozarella, guacamole"
-               class="form-control"
+               class="form-control form-input"
                [formControl]="recipeForm.controls['recipeTags']"
 
         >
@@ -63,7 +66,8 @@
         <label for="amountPersons">Antal personer:</label>
         <input type="text"
                id="amountPersons"
-               class="form-control"
+               placeholder="Hvor mange personer er denne opskrift tilegnet?"
+               class="form-control form-input"
                [formControl]="recipeForm.controls['recipeAmountPersons']"
 
         >
@@ -71,13 +75,13 @@
         <label for="picture">Billede:</label>
         <input type="text"
                id="picture"
-               class="form-control"
+               class="form-control form-input"
                [formControl]="recipeForm.controls['recipePicture']"
 
         >
 
-        <button type="submit" class="btn btn-success">Save</button>
-      </div>
+        <button type="submit" class="btn btn-success pull-right">Gem opskrift</button>
+
     </form>
 
 

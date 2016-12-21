@@ -5,6 +5,7 @@ import {Recipe} from "../../entities/recipe.entity";
 import {RecipeFormValidators} from "./recipe-form.validators";
 import {Category} from "../../entities/category.entity";
 import {CategoryService} from "../../services/category.service";
+import {RecipeService} from "../../services/recipe.service";
 
 @Component({
   selector: 'app-recipe-form',
@@ -17,7 +18,7 @@ export class RecipeFormComponent implements OnInit {
   private categories : Category[];
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute,
-              private router : Router, private categoryService : CategoryService)
+              private router : Router, private categoryService : CategoryService, private recipeService : RecipeService)
   {
 
   }
@@ -50,7 +51,7 @@ export class RecipeFormComponent implements OnInit {
   initIngredients() {
     return this.fb.group({
       amount: [''],
-      ingredient: ['']
+      name: ['']
     })
   }
 
@@ -72,21 +73,24 @@ export class RecipeFormComponent implements OnInit {
 
     //Values from form
     var title = recipeForm.controls['recipeTitle'].value;
+    var procedure = recipeForm.controls['recipeProcedure'].value;
     var ingredientArray = recipeForm.controls['ingredients'].value;
     var category = recipeForm.controls['recipeCategory'].value;
     var tags = recipeForm.controls['recipeTags'].value.split(',');
     var numPersons = recipeForm.controls['recipeAmountPersons'].value;
     var picture = recipeForm.controls['recipePicture'].value;
-    console.log(tags);
-    console.log(numPersons);
-    console.log(picture);
 
     //Assign values from form to recipe object
     recipe.title = title;
+    recipe.procedure = procedure;
     ingredientArray.map((ingredient) => recipe.ingredients.push(ingredient));
     recipe.category = category;
+    tags.map((tag) => recipe.tags.push(tag));
+    recipe.numPersons = numPersons;
+    recipe.picture = picture;
+    delete recipe._id;
 
-    console.log(recipe);
+    this.recipeService.createRecipe(recipe).subscribe();
   }
 
 
