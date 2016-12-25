@@ -7,9 +7,16 @@
                id="title"
                placeholder="Navn på opskrift"
                class="form-control form-input"
+               [class.error]="recipeForm.controls.recipeTitle.dirty && recipeForm.controls.recipeTitle.hasError('invalidLenght')"
                [formControl]="recipeForm.controls['recipeTitle']"
-
         >
+
+
+        <!--Error div-->
+        <div class="error-message" *ngIf="recipeForm.controls.recipeTitle.hasError('invalidLenght') &&
+                      recipeForm.controls.recipeTitle.touched" >
+          En opskrift må have en titel med en længde fra minimum 2 bogstaver til og med 60 bogstaver.
+        </div>
 
         <label for="procedure">Fremgangsmåde:</label>
         <textarea rows="10" cols="50"
@@ -83,8 +90,5 @@
         <button type="submit" class="btn btn-success pull-right">Gem opskrift</button>
 
     </form>
-
-
-
   </div>
 </div>

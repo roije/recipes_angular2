@@ -67,31 +67,35 @@ export class RecipeFormComponent implements OnInit {
 
 
   onSubmit(recipeForm) : void {
-    var recipe = new Recipe("", "", [], [], "", "", 0, "", 0);
-    console.log("This is the empty recipe: ", recipe);
-    console.log("Same recipe with values will be saved in db: ----\n");
 
-    //Values from form
-    var title = recipeForm.controls['recipeTitle'].value;
-    var procedure = recipeForm.controls['recipeProcedure'].value;
-    var ingredientArray = recipeForm.controls['ingredients'].value;
-    var category = recipeForm.controls['recipeCategory'].value;
-    var tags = recipeForm.controls['recipeTags'].value.split(',');
-    var numPersons = recipeForm.controls['recipeAmountPersons'].value;
-    var picture = recipeForm.controls['recipePicture'].value;
+    if(recipeForm.valid) {
+      var recipe = new Recipe("", "", [], [], "", "", 0, "", 0);
 
-    //Assign values from form to recipe object
-    recipe.title = title;
-    recipe.procedure = procedure;
-    ingredientArray.map((ingredient) => recipe.ingredients.push(ingredient));
-    recipe.category = category;
-    tags.map((tag) => recipe.tags.push(tag));
-    recipe.numPersons = numPersons;
-    recipe.picture = picture;
-    delete recipe._id;
+      //Values from form
+      var title = recipeForm.controls['recipeTitle'].value;
+      var procedure = recipeForm.controls['recipeProcedure'].value;
+      var ingredientArray = recipeForm.controls['ingredients'].value;
+      var category = recipeForm.controls['recipeCategory'].value;
+      var tags = recipeForm.controls['recipeTags'].value.split(',');
+      var numPersons = recipeForm.controls['recipeAmountPersons'].value;
+      var picture = recipeForm.controls['recipePicture'].value;
 
-    this.recipeService.createRecipe(recipe).subscribe();
+      //Assign values from form to recipe object
+      recipe.title = title;
+      recipe.procedure = procedure;
+      ingredientArray.map((ingredient) => recipe.ingredients.push(ingredient));
+      recipe.category = category;
+      tags.map((tag) => recipe.tags.push(tag));
+      recipe.numPersons = numPersons;
+      recipe.picture = picture;
+      delete recipe._id;
+
+      this.recipeService.createRecipe(recipe).subscribe(
+        () => this.router.navigate(['recipes/category/' + recipeForm.controls['recipeCategory'].value])
+      );
+    }
+    else{
+      console.log("Invalid");
+    }
   }
-
-
 }

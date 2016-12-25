@@ -40,8 +40,6 @@ export class RecipeService{
 
     let options = this.getOptionsObject();
 
-    console.log(recipe);
-    console.log("her 1");
     this.url = "http://localhost:3000/api/recipes";
     return this.http.post(this.url, recipe, options)
       .map((res: Response) => {
@@ -49,7 +47,6 @@ export class RecipeService{
         let createdRecipe = res.json();
         if(!this.recipes)
         {
-          console.log("her 2");
           this.getRemoteRecipes(undefined).subscribe(
             () => this.recipes.push(createdRecipe)
           );

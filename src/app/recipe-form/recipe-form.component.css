@@ -6,3 +6,11 @@
 .form-input{
   margin-bottom: 20px;
 }
+
+.error-message{
+  color: #ff0000;
+}
+
+.error{
+  border-color: #ff0000;;
+}
