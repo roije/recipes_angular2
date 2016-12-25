@@ -57,11 +57,15 @@
         </div>
 
         <label for="category">Kategori:</label>
-        <select id="category" class="form-control form-input" [formControl]="recipeForm.controls['recipeCategory']">
+        <select id="category" class="form-control " [formControl]="recipeForm.controls['recipeCategory']">
           <option *ngFor="let category of categories" [value]="category._id">{{category.title}}</option>
         </select>
 
-        <label for="tags">Tags:</label>
+      <div class="error-message" *ngIf="recipeForm.controls.recipeCategory.hasError('required') ">
+        Vælg en kategori
+      </div>
+
+        <label for="tags" style="margin-top: 20px">Tags:</label>
         <input type="text"
                id="tags"
                placeholder="f.eks. hakkekød, mozarella, guacamole"

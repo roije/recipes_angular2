@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators, FormArray} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators, FormArray, Validator} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Recipe} from "../../entities/recipe.entity";
 import {RecipeFormValidators} from "./recipe-form.validators";
@@ -41,7 +41,7 @@ export class RecipeFormComponent implements OnInit {
       'ingredients' : this.fb.array([
         this.initIngredients(),
       ]),
-      'recipeCategory' : [''],
+      'recipeCategory' : ['', Validators.required],
       'recipeTags' : [''],
       'recipeAmountPersons' : [''],
       'recipePicture' : ['']
