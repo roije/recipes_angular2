@@ -15,6 +15,7 @@ import {RecipeService} from "../services/recipe.service";
 import {RecipesFilter} from "../pipes/recipes-filter.pipe";
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
     RecipesListComponent,
     RecipesFilter,
     RecipeDetailsComponent,
-    RecipeFormComponent
+    RecipeFormComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,

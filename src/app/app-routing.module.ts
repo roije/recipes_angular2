@@ -5,6 +5,7 @@ import {RecipesHomeComponent} from "./recipes-home/recipes-home.component";
 import {RecipesListComponent} from "./recipes-list/recipes-list.component";
 import {RecipeDetailsComponent} from "./recipe-details/recipe-details.component";
 import {RecipeFormComponent} from "./recipe-form/recipe-form.component";
+import {BlogComponent} from "./blog/blog.component";
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'recipe_form',
     component: RecipeFormComponent
+  },
+  {
+    path: 'blog',
+    component: BlogComponent
   }
 ];
 
